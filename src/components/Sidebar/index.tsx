@@ -5,10 +5,10 @@ const Sidebar = () => {
     <div className="bg-[#2C2F33] rounded-3xl flex flex-col gap-5 items-center">
       <div className="p-2.5">
         <svg
-          width="40"
+          fill="none"
           height="36"
           viewBox="0 0 40 36"
-          fill="none"
+          width="40"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -18,15 +18,15 @@ const Sidebar = () => {
         </svg>
       </div>
       <Link
-        to="/"
         className="flex items-center px-10 py-5 gap-2.5 border-r border-r-[#DA584B] bg-gradient-to-l from-rose-500/25"
+        to="/"
       >
         <div>
           <svg
-            width="18"
+            fill="none"
             height="18"
             viewBox="0 0 18 18"
-            fill="none"
+            width="18"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -35,7 +35,7 @@ const Sidebar = () => {
             />
           </svg>
         </div>
-        <h1 className="text-[#DA584B]">{'DASHBOARD'}</h1>
+        <h1 className="text-[#DA584B]">DASHBOARD</h1>
       </Link>
     </div>
   );

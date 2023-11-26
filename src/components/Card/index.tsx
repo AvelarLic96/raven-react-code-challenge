@@ -1,26 +1,44 @@
-const Card = () => {
-  return(
+import { useEffect, useState } from 'react';
+import wordsToNumbers from 'words-to-numbers';
+
+import { Task, TimeDays } from '../../types';
+import { handlerdays } from '../../shared/helper/handlerDays';
+import OptionButton from '../OptionButton';
+
+const Card = ({ itemCard }: {itemCard: Task}) => {
+  const itemDueDate = handlerdays(itemCard.dueDate);
+  const [timeStyle, setTimeStyle] = useState<string>();
+
+  useEffect(() => {
+    if (itemDueDate === TimeDays.YESTERDAY || new Date(itemDueDate) < new Date()) {
+      setTimeStyle('text-[#DA584B] bg-red-500/10');
+    } else if (itemDueDate === TimeDays.TODAY || itemDueDate === TimeDays.TOMORROW) {
+      setTimeStyle('text-[#E5B454] bg-yellow-500/10');
+    } else {
+      setTimeStyle('bg-gray-500/10');
+    }
+  }, [itemDueDate]);
+
+  return (
     <div className="p-6 bg-[#2C2F33] flex flex-col w-96 gap-5 rounded-lg">
       <div className="flex w-full">
-        <h1 className="text-[18px]">{'Title'}</h1>
+        <h1 className="text-[18px]">{itemCard.name}</h1>
         <div className="flex w-full justify-end">
-          {'...'}
+          <OptionButton taskId={itemCard.id} />
         </div>
       </div>
       <div className="flex w-full gap-5">
-        <div className="flex flex-1">
-          <h1>{'points'}</h1>
+        <div className="flex flex-row">
+          <h1 className='w-fit'>{wordsToNumbers(itemCard.pointEstimate)} Points</h1>
         </div>
         <div className="flex flex-1 w-full justify-end">
-          <button
-            type="button"
-            className={`flex  items-center p-2 gap-2.5 rounded-sm`}
+          <div className={`flex items-center p-2 gap-2.5 rounded-sm ${timeStyle} w-fit`}
           >
             <svg
-              width="22"
+              fill="none"
               height="20"
               viewBox="0 0 22 20"
-              fill="none"
+              width="22"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -28,23 +46,33 @@ const Card = () => {
                 fill="white"
               />
             </svg>
-            {'date'}
-          </button>
+            {itemDueDate}
+          </div>
         </div>
       </div>
       <div className="flex w-full gap-2">
-        <div>
-          <p className="p-2 bg-green-500/10 text-[#70B252]">{'tag'}</p>
-        </div>
+        {itemCard.tags.map((item: string, index: number) => {
+          return (
+            <div key={item}>
+              {index % 2 === 0 ? (
+                <p className="p-2 bg-green-500/10 text-[#70B252]">{item}</p>
+              ): null}
+              {index % 2 !== 0 ? (
+                <p className="p-2 bg-yellow-500/10 text-[#E5B454]">{item}</p>
+              ): null}
+            </div>
+          );
+        })}
       </div>
       <div className="flex w-full">
         <img
-          className="w-10 h-10 rounded-full"
           alt="user"
+          className="w-10 h-10 rounded-full"
+          src={itemCard.assignee.avatar}
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Card
