@@ -7,8 +7,9 @@ export interface Task {
     tags: string[];
     dueDate: string;
     assignee: {
-      __typename: string,
-      avatar: string
+      __typename: string;
+      avatar: string;
+      fullName: string;
     }
 }
 

@@ -33,20 +33,20 @@ export const TAGS_QUERY = gql`
 `;
 
 export const TASK_QUERY = gql`
-  {
-    BacklogTasks: tasks(input: { status: BACKLOG }) {
+  query GetAllTaks($name: String){
+    BacklogTasks: tasks(input: { status: BACKLOG, name: $name}) {
       ...taskFields
     }
-    TodoTasks: tasks(input: { status: TODO }) {
+    TodoTasks: tasks(input: { status: TODO, name: $name }) {
       ...taskFields
     }
-    InProgressTasks: tasks(input: { status: IN_PROGRESS }) {
+    InProgressTasks: tasks(input: { status: IN_PROGRESS, name: $name }) {
       ...taskFields
     }
-    DoneTasks: tasks(input: { status: DONE }) {
+    DoneTasks: tasks(input: { status: DONE, name: $name }) {
       ...taskFields
     }
-    CancelledTasks: tasks(input: { status: CANCELLED }) {
+    CancelledTasks: tasks(input: { status: CANCELLED, name: $name }) {
       ...taskFields
     }
   }
@@ -60,6 +60,19 @@ export const TASK_QUERY = gql`
     dueDate
     assignee {
       avatar
+      fullName
     }
   }
 `;
+
+export const PROFILE_QUERY = gql`
+  {
+    profile {
+      fullName
+      email
+      type
+      createdAt
+      updatedAt
+    }
+  }
+`

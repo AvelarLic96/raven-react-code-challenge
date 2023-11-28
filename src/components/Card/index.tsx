@@ -64,12 +64,13 @@ const Card = ({ itemCard }: {itemCard: Task}) => {
           );
         })}
       </div>
-      <div className="flex w-full">
+      <div className="flex gap-[10px] w-full">
         <img
           alt="user"
           className="w-10 h-10 rounded-full"
           src={itemCard.assignee.avatar}
         />
+        <p className='self-center'>{itemCard.assignee.fullName}</p>
       </div>
     </div>
   );

@@ -29,10 +29,10 @@ const TaskModal = () => {
 
   useEffect(() => {
     if (
-      dataForm?.name !== '' &&
-      dataForm?.points !== '' &&
-      dataForm?.assignee !== '' &&
-      dataForm?.tags.length !== 0
+      dataForm.name !== '' &&
+      dataForm.points !== '' &&
+      dataForm.assignee !== '' &&
+      dataForm.tags.length !== 0
     ) {
       setIsDataFilled(true);
     } else {
@@ -66,7 +66,7 @@ const TaskModal = () => {
   if (!pointLoading) {
     pointsArray = pointsData.__type.enumValues.slice(0).reverse();
   }
-  console.log('pointsData', pointsArray)
+
   if (!userLoading) {
     usersArray = usersData.users;
   }
@@ -135,9 +135,9 @@ const TaskModal = () => {
           <DueDate dataForm={dataForm} setDataForm={setDataForm} />
         </div>
         <div className="flex gap-2.5 justify-end">
-          <button 
+          <button
             onClick={closeModal}
-            type='button' 
+            type='button'
           >
             Cancel
           </button>

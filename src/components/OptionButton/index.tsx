@@ -37,7 +37,7 @@ const OptionButton = ({ taskId }:{ taskId: string }) => {
             <Menu.Item>
               {() => (
                 <button
-                  className='text-white group flex w-full  gap-3 items-center rounded-md px-2 py-2 text-sm cursor-not-allowed'
+                  className='text-white group flex w-full  gap-3 items-center rounded-md px-2 py-2 text-sm'
                   type='button'
                 >
                   <EditIcon />

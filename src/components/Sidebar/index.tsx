@@ -37,6 +37,26 @@ const Sidebar = () => {
         </div>
         <h1 className="text-[#DA584B]">DASHBOARD</h1>
       </Link>
+      <Link
+        className="w-[203px] flex items-center px-10 py-5 gap-2.5 border-r border-r-[#DA584B] bg-gradient-to-l from-rose-500/25"
+        to="/settings"
+      >
+        <div>
+          <svg
+            fill="none"
+            height="18"
+            viewBox="0 0 18 18"
+            width="18"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 0H8V8H0V0ZM0 10H8V18H0V10ZM10 0H18V8H10V0ZM10 10H18V18H10V10ZM12 2V6H16V2H12ZM12 12V16H16V12H12ZM2 2V6H6V2H2ZM2 12V16H6V12H2Z"
+              fill="#DA584B"
+            />
+          </svg>
+        </div>
+        <h1 className="text-[#DA584B]">SETTINGS</h1>
+      </Link>
     </div>
   );
 };

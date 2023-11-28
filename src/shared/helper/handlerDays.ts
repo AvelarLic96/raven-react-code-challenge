@@ -17,6 +17,6 @@ export const handlerdays = (day: string) => {
   } else if (today.toDateString() === itemDate.toDateString()) {
     return 'Today';
   } else {
-    return moment(itemDate).format('D MMMM, YYYY');
+    return moment(itemDate).format('MMMM D, YYYY');
   }
 };
